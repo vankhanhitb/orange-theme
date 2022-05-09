@@ -1,0 +1,6 @@
+development:
+  password: 
+  theme_id: 
+  store: 
+  ignore_files:
+    - config/settings_data.json
