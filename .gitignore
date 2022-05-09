@@ -1,0 +1,18 @@
+# Gitignore #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+node_modules
+config.yml
+theme.exe
+config/settings_data.json
+package-lock.json
+assets/bundle.js
+assets/vendor.bundle.js
+assets/checkout.js
+assets/vendor.checkout.js
