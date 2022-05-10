@@ -16,3 +16,4 @@ assets/bundle.js
 assets/vendor.bundle.js
 assets/checkout.js
 assets/vendor.checkout.js
+*.yml
