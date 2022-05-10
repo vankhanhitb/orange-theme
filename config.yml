@@ -1,6 +1,6 @@
 development:
-  password: 
-  theme_id: 
-  store: 
+  password: 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 
+  theme_id: 123952169019
+  store: orange-phavia.myshopify.com
   ignore_files:
     - config/settings_data.json

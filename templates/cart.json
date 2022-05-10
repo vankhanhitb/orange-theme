@@ -1,7 +1,7 @@
 {
   "sections": {
-    "cart-items": {
-      "type": "main-cart-items",
+    "main": {
+      "type": "main-cart",
       "settings": {
         "show_vendor": false,
         "padding_top": 36,
@@ -9,7 +9,7 @@
       }
     },
     "cart-footer": {
-      "type": "main-cart-footer",
+      "type": "cart-footer",
       "blocks": {
         "subtotal": {
           "type": "subtotal",
@@ -52,7 +52,7 @@
     }
   },
   "order": [
-    "cart-items",
+    "main",
     "cart-footer",
     "featured-collection"
   ]
