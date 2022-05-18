@@ -39,7 +39,7 @@
     %}
 
    {%- render 'variants' -%} 
-
+    {{ 'flickity.min.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
@@ -82,5 +82,6 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>
