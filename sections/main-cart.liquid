@@ -193,7 +193,7 @@
                       <quantity-input class="quantity">
                         <button class="quantity__button no-js-hidden" name="minus" type="button">
                           <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
-                          {% render 'icon-minus' %}
+                          {% render 'icons' with icon: 'minus' %}
                         </button>
                         <input class="quantity__input"
                           type="number"
@@ -206,13 +206,13 @@
                         >
                         <button class="quantity__button no-js-hidden" name="plus" type="button">
                           <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
-                          {% render 'icon-plus' %}
+                          {% render 'icons' with icon:'plus' %}
                         </button>
                       </quantity-input>
 
                       <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
                         <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                          {% render 'icon-remove' %}
+                          {% render 'icons' with icon: 'remove' %}
                         </a>
                       </cart-remove-button>
                     </div>
