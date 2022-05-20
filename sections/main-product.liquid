@@ -81,7 +81,7 @@
             data-shopify-title="{{ product.title | escape }}"
             data-shopify-xr-hidden
           >
-            {% render 'icon-3d-model' %}
+            {% render 'icons' with icon:'icon-3d-model' %}
             {{ 'products.product.xr_button' | t }}
           </button>
         {%- endif -%}
@@ -144,11 +144,11 @@
                    <li id="Slide-Thumbnails-{{ section.id }}-{{ forloop.index }}" class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}" data-target="{{ section.id }}-{{ media.id }}"  data-media-position="{{ media_index }}">
                     {%- if media.media_type == 'model' -%}
                       <span class="thumbnail__badge" aria-hidden="true">
-                        {%- render 'icon-3d-model' -%}
+                        {%- render 'icons' with icon:'icon-3d-model' -%}
                       </span>
                     {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
                       <span class="thumbnail__badge" aria-hidden="true">
-                        {%- render 'icon-play' -%}
+                        {%- render 'icons' with icon:'play' -%}
                       </span>
                     {%- endif -%}
                     <button class="thumbnail global-media-settings global-media-settings--no-shadow {% if media.preview_image.aspect_ratio > 1 %}thumbnail--wide{% else %}thumbnail--narrow{% endif %}"
@@ -444,7 +444,7 @@
               >
                 <template>
                   <pickup-availability-preview class="pickup-availability-preview">
-                    {% render 'icon-unavailable' %}
+                    {% render 'icons' with icon:'unavailable' %}
                     <div class="pickup-availability-info">
                       <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
                       <button class="pickup-availability-button link link--text underlined-link">{{ 'products.product.pickup_availability.refresh' | t }}</button>
@@ -520,7 +520,7 @@
   {%- for block in popups -%}
     <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
       <div role="dialog" aria-label="{{ block.settings.text }}" aria-modal="true" class="product-popup-modal__content" tabindex="-1">
-        <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+        <button id="ModalClose-{{ block.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icons' with icon:'close' %}</button>
         <div class="product-popup-modal__content-info">
           <h1 class="h2">{{ block.settings.page.title }}</h1>
           {{ block.settings.page.content }}

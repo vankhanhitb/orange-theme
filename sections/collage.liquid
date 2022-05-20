@@ -91,7 +91,7 @@
                     <button class="deferred-media__poster full-unstyled-link{% if block.settings.image_padding %} collage-card-spacing{% endif %}" type="button" aria-haspopup="dialog" data-media-id="{{ block.settings.video_url.id }}">
                       <div class="media media--transparent ratio"{% if block.settings.cover_image != blank %} style="--ratio-percent: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%"{% else %} style="--ratio-percent: 100%"{% endif %}>
                         <span class="deferred-media__poster-button motion-reduce">
-                          {%- render 'icon-play' -%}
+                          {%- render 'icons' with icon:'play' -%}
                         </span>
   
                         {%- if block.settings.cover_image != blank -%}
@@ -120,7 +120,7 @@
                 </modal-opener>
                 <modal-dialog id="PopupModal-{{ block.id }}" class="modal-video media-modal color-background-1">
                   <div class="modal-video__content" role="dialog" aria-label="{{ block.settings.description | escape }}" aria-modal="true" tabindex="-1">
-                    <button id="ModalClose-{{ block.id }}" type="button" class="modal-video__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+                    <button id="ModalClose-{{ block.id }}" type="button" class="modal-video__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icons' with icon:'close' %}</button>
                     <div class="modal-video__content-info">
                       <deferred-media class="modal-video__video template-popup">
                         <template>

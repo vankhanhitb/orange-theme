@@ -21,10 +21,10 @@
     {%- endif -%}
     {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
       {%- if form.posted_successfully? -%}
-        <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+        <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icons' with icon:'success' %} {{ 'templates.contact.form.post_success' | t }}</div>
       {%- elsif form.errors -%}
         <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icons' with icon:'error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
         </div>
         <ul class="form-status-list caption-large" role="list">
           <li>
@@ -60,7 +60,7 @@
           {%- if form.errors contains 'email' -%}
             <small class="contact__field-error" id="ContactForm-email-error">
               <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+              <span class="form__message">{% render 'icons' with icon:'error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
             </small>
           {%- endif -%}
         </div>

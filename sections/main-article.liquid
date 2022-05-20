@@ -52,12 +52,12 @@
           <div class="article-template__social-sharing page-width page-width--narrow" {{ block.shopify_attributes }}>
             <share-button class="share-button" {{ block.shopify_attributes }}>
               <button class="share-button__button hidden">
-                {% render 'icon-share' %}
+                {% render 'icons' with icon:'share' %}
                 {{ block.settings.share_label | escape }}
               </button>
               <details id="Details-{{ block.id }}-{{ section.id }}">
                 <summary class="share-button__button">
-                  {% render 'icon-share' %}
+                  {% render 'icons' with icon:'share' %}
                   {{ block.settings.share_label | escape }}
                 </summary>
                 <div id="Article-share-{{ section.id }}" class="share-button__fallback motion-reduce">
@@ -75,11 +75,11 @@
                     <label class="field__label" for="url">{{ 'general.share.share_url' | t }}</label>
                   </div>
                   <button class="share-button__close hidden no-js-hidden">
-                    {% render 'icon-close' %}
+                    {% render 'icons' with icon:'close' %}
                     <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
                   </button>
                   <button class="share-button__copy no-js-hidden">
-                    {% render 'icon-clipboard' %}
+                    {% render 'icons' with icon:'clipboard' %}
                     <span class="visually-hidden">{{ 'general.share.copy_to_clipboard' | t }}</span>
                   </button>
                 </div>
@@ -137,7 +137,7 @@
           {%- if form.errors -%}
             <div class="form__message" role="alert">
               <h3 class="form-status caption-large text-body" tabindex="-1" autofocus>
-                {% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}
+                {% render 'icons' with icon:'error' %} {{ 'templates.contact.form.error_heading' | t }}
               </h3>
             </div>
             <ul class="form-status-list caption-large">
@@ -158,7 +158,7 @@
             </ul>
           {%- elsif form.posted_successfully? -%}
             <div class="form-status-list form__message" role="status">
-              <h3 class="form-status" tabindex="-1" autofocus>{% render 'icon-success' %} {{ post_message | t }}</h3>
+              <h3 class="form-status" tabindex="-1" autofocus>{% render 'icons' with icon:'success' %} {{ post_message | t }}</h3>
             </div>
           {%- endif -%}
 
@@ -183,7 +183,7 @@
                 <label class="field__label" for="CommentForm-author">{{ 'blogs.article.name' | t }} <span aria-hidden="true">*</span></label>
                 {%- if form.errors contains 'author' -%}
                   <small id="CommentForm-author-error">
-                    <span class="form__message">{% render 'icon-error' %}{{ 'blogs.article.name' | t }} {{ form.errors.messages['author'] }}.</span>
+                    <span class="form__message">{% render 'icons' with icon:'error' %}{{ 'blogs.article.name' | t }} {{ form.errors.messages['author'] }}.</span>
                   </small>
                 {%- endif -%}
               </div>
@@ -208,7 +208,7 @@
                 <label class="field__label" for="CommentForm-email">{{ 'blogs.article.email' | t }} <span aria-hidden="true">*</span></label>
                 {%- if form.errors contains 'email' -%}
                   <small id="CommentForm-email-error">
-                    <span class="form__message">{% render 'icon-error' %}{{ 'blogs.article.email' | t }} {{ form.errors.messages['email'] }}.</span>
+                    <span class="form__message">{% render 'icons' with icon:'error' %}{{ 'blogs.article.email' | t }} {{ form.errors.messages['email'] }}.</span>
                   </small>
                 {%- endif -%}
               </div>
@@ -231,7 +231,7 @@
             </div>
             {%- if form.errors contains 'body' -%}
               <small id="CommentForm-body-error">
-                <span class="form__message">{% render 'icon-error' %}{{ 'blogs.article.message' | t }} {{ form.errors.messages['body'] }}.</span>
+                <span class="form__message">{% render 'icons' with icon:'error' %}{{ 'blogs.article.message' | t }} {{ form.errors.messages['body'] }}.</span>
               </small>
             {%- endif -%}
           </div>
