@@ -591,7 +591,7 @@ h6:empty {
   display: inline-block;
   border: none;
   box-shadow: none;
-  text-decoration: underline;
+  text-decoration: unset;
   text-underline-offset: 0.3rem;
   color: rgb(var(--color-link));
   background-color: transparent;
@@ -2179,18 +2179,31 @@ input[type='checkbox'] {
   top: 0;
 }
 
-.shopify-section-header-hidden {
-  transform: translateY(-100%);
-}
-
-.shopify-section-header-hidden.menu-open {
-  transform: translateY(0);
-}
-
 #shopify-section-header.animate {
-  transition: transform 0.15s ease-out;
+  -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-name: slideDown;
+    animation-name: slideDown;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+}
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); }
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%); } 
 }
 
+@keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); }
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%); } 
+}
 /* Main Header Layout */
 .header-wrapper {
   display: block;
@@ -12406,7 +12419,7 @@ h2,
   padding: 0.4rem;
   font-size: 1.6rem;
   line-height: 1;
-  text-decoration: underline;
+  text-decoration: unset;
   color: rgb(var(--color-base-outline-button-labels));
 }
 
