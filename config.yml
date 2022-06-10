@@ -1,6 +1,6 @@
 development:
-  password: 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 
-  theme_id: 132538532088
-  store: automatic-theme.myshopify.com
+  password:  
+  theme_id: 
+  store: 
   ignore_files:
     - config/settings_data.json
