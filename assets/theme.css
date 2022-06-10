@@ -6213,7 +6213,7 @@ input.mobile-facets__checkbox {
 .mega-menu__list {
   display: grid;
   gap: 2.4rem 4rem;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   list-style: none;
 }
 
@@ -12754,4 +12754,49 @@ h2,
   position: absolute;
   width: 100%;
   height: 100%;
+}
+/* ************ STYLE CUSTOMIZE STYLE ************ */
+/* MENU */
+.mega__menu-with-banner .megamenu__banner,
+.mega__menu-with-product .megamenu__product{
+  display: grid;
+  gap: 2.4rem 4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.megamenu__banner .banner-main{
+  max-width: 450px;
+  width: 100%;
+}
+.megamenu__banner .banner-main .banner-content{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.megamenu__banner .banner-main .banner-content .link-banner__link{
+  padding: 0px;
+  margin: 0px;
+  line-height: 0;
+  display: block;
+  width: 100%;
+}
+.megamenu__banner .banner-main .banner-content .link-banner__link:hover img{
+  transform: scale(1.09);
+}
+.megamenu__banner .banner-main .banner-content .banner__info{
+   position: absolute;
+   top: 50%;
+   left: 0;
+   width: 100%;
+   text-align: center;
+}
+.megamenu__banner .banner-main .banner-content .banner__info .banner-title,
+.megamenu__banner .banner-main .banner-content .banner__info .banner-sub-title{
+  color: #FFFFFF;
+}
+.megamenu__banner .banner-main img{
+   width: 100%;
+   object-fit: cover;
+   object-position: center;
+   transition: all 0.5s ease-in-out 0.3s;
+   transform: scale(1);
 }

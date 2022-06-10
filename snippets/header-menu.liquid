@@ -100,7 +100,7 @@
 				{% for block in section.blocks %}
 					{% case block.type %}
 						{% when "menu_with_banner" %}
-							{% assign menu_with_banner =  block.settings.text_menu_banner | downcase %}
+							{% assign menu_with_banner =  block.settings.item_menu_banner | downcase %}
 							{%- if menu_with_banner contains link_title -%}
 								{% assign list__item_megamenu = link_title | append: ',' %}
 								<header-menu>
@@ -130,9 +130,25 @@
 												</li>
 												{%- endfor -%}
 											</ul>
-											<div class="banner-content">
+											<div class="banner-main">
 												{% if block.settings.menu_banner %}
-													<img class="img-responsive" src="{{ block.settings.menu_banner | img_url: 'master' }}"  />
+												   <div class="banner-content">
+													   {% if block.settings.link_banner %}
+													   	<a href="{{ block.settings.link_banner }}" class="link-banner__link link">
+													   {% endif %}
+														<img class="img-responsive" src="{{ block.settings.menu_banner | img_url: 'master' }}"  />
+														<div class="banner__info">
+															{% if block.settings.title_banner %}
+																<h2 class="banner-title"> {{ block.settings.title_banner }} </h2>
+															{% endif %}
+															{% if block.settings.sub_title_banner %}
+																<h3 class="banner-sub-title"> {{ block.settings.sub_title_banner }} </h3>
+															{% endif %}
+														</div>
+														{% if block.settings.link_banner %}
+														   </a>
+													    {% endif %}
+													</div>	
 												{% endif %}
 											</div>
 										</div>
