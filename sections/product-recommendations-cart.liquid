@@ -1,0 +1,177 @@
+{%- if section.settings.show_product_recommendations and cart.item_count > 0 -%}
+
+{%- for item in cart.items -%}
+    {%- assign product_rec = item.product -%}
+{%- endfor -%}
+{{ recommendations.performed}}
+  {%- if recommendations.performed -%}
+    {%- if recommendations.products_count > 0 -%}
+      <div class="product-recommendations__inner">
+        {%- if section.settings.heading != blank -%}
+          <div class="section-header text-center">
+            <h2>{{ section.settings.heading | escape }}</h2>
+          </div>
+        {%- endif -%}
+        <ul class="grid grid--uniform grid--view-items">
+          {%- for product in recommendations.products -%}
+          
+           {%- assign display = true -%}
+            
+            {%- for item in cart.items -%}
+                {%- if item.product.id == product.id -%}
+                    {%- assign display = false -%}
+                {%- endif -%}
+            {%- endfor -%}
+          
+          {%- if display == true -%}
+            <li class="grid__item small--one-half medium-up--one-quarter">
+			  {% render 'card-product',
+				card_product: product,
+				media_aspect_ratio: section.settings.image_ratio,
+				show_secondary_image: section.settings.show_secondary_image,
+				show_vendor: section.settings.show_vendor,
+				show_rating: section.settings.show_rating
+				%}
+            </li>
+          {%- endif -%}
+          
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  {%- else  -%}
+    <div class="page-width" data-base-url="{{ routes.product_recommendations_url }}" data-product-id="{{ product_rec.id }}" data-section-id="{{ section.id }}" data-section-type="product-recommendations"></div>
+  {%- endif -%}
+{%- endif -%}
+{% schema %}
+{
+  "name": {
+    "en": "Product Recommend Cart"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_product_recommendations",
+      "label": {
+        "en": "Show dynamic recommendations"
+      },
+      "info": {      
+        "en": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": {
+        "en": "Heading"
+      },
+      "default": {
+        "en": "You may also like"
+      }
+    },
+    {
+		"type": "header",
+		"content": "t:sections.product-recommendations.settings.header__2.content"
+	  },
+	  {
+		"type": "select",
+		"id": "image_ratio",
+		"options": [
+		  {
+			"value": "adapt",
+			"label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+		  },
+		  {
+			"value": "portrait",
+			"label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+		  },
+		  {
+			"value": "square",
+			"label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+		  }
+		],
+		"default": "adapt",
+		"label": "t:sections.product-recommendations.settings.image_ratio.label"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_secondary_image",
+		"default": false,
+		"label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_vendor",
+		"default": false,
+		"label": "t:sections.product-recommendations.settings.show_vendor.label"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_rating",
+		"default": false,
+		"label": "t:sections.product-recommendations.settings.show_rating.label",
+		"info": "t:sections.product-recommendations.settings.show_rating.info"
+	  }
+  ]
+}
+{% endschema %}
+
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding isolate" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
+    {% if recommendations.performed and recommendations.products_count > 0 %}
+      <h2 class="product-recommendations__heading {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
+      <ul class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down" role="list">
+        {% for recommendation in recommendations.products %}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: recommendation,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating
+            %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </product-recommendations>
+</div>
+
+{% javascript %}
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('product-recommendations');
+
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+
+            if (html.querySelector('.grid__item')) {
+              this.classList.add('product-recommendations--loaded');
+            }
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+

@@ -123,12 +123,6 @@
   --alpha-badge-border: 1;
 }
 
-:root,
-.color-background-1,
-.color-background-2 {
-  --color-card-hover: var(--color-base-text);
-}
-
 .color-inverse {
   --color-card-hover: var(--color-base-background-1);
 }
@@ -282,8 +276,7 @@ body,
 .color-inverse,
 .color-accent-1,
 .color-accent-2 {
-  color: rgba(var(--color-foreground), 0.75);
-  background-color: rgb(var(--color-background));
+  color: rgba(var(--color-foreground));
 }
 
 .background-secondary {
@@ -359,7 +352,7 @@ body,
 }
 
 .text-body {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   letter-spacing: 0.06rem;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   font-family: var(--font-body-family);
@@ -6218,9 +6211,8 @@ input.mobile-facets__checkbox {
 }
 
 .mega-menu__link {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground));
   display: block;
-  font-size: 1.3rem;
   line-height: calc(1 + 0.3 / var(--font-body-scale));
   padding-bottom: 0.6rem;
   padding-top: 0.6rem;
@@ -6231,6 +6223,7 @@ input.mobile-facets__checkbox {
 
 .mega-menu__link--level-2 {
   font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .mega-menu__link--level-2:not(:only-child) {
@@ -12410,21 +12403,8 @@ h2,
   clip: auto;
 }
 
-.link {
-  cursor: pointer;
-  display: inline-block;
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
-  padding: 0.4rem;
-  font-size: 1.6rem;
-  line-height: 1;
-  text-decoration: unset;
-  color: rgb(var(--color-base-outline-button-labels));
-}
-
 .link:hover {
-  color: rgba(var(--color-base-outline-button-labels), 0.75);
+  color: rgba(var(--color-base-outline-button-labels));
 }
 
 .button {
@@ -12522,7 +12502,7 @@ h2,
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 1px;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
@@ -12799,4 +12779,7 @@ h2,
    object-position: center;
    transition: all 0.5s ease-in-out 0.3s;
    transform: scale(1);
+}
+.list-menu--inline > li .focus-inset > span{
+  text-transform: uppercase;
 }
