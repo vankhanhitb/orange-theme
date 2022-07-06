@@ -137,7 +137,15 @@
 											</ul>
 											<div class="product-content">
 												{% if block.settings.menu_product %}
-													{{ all_products[block.settings.menu_product].title }}
+													<div class="menu__item-product">
+														{% render 'card-product',
+															card_product: all_products[block.settings.menu_product],
+															media_aspect_ratio: 'adapt',
+															show_secondary_image: false,
+															extend_height: true
+														%}
+													</div>
+													
 												{% endif %}
 											</div>
 										</div>

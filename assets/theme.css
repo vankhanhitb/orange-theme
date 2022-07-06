@@ -2711,10 +2711,10 @@ details-disclosure > details {
   border: 1px solid transparent;
   border-radius: var(--badge-corner-radius);
   display: inline-block;
-  font-size: 1.2rem;
-  letter-spacing: 0.1rem;
+  font-size: 1.4rem;
+  letter-spacing: .1rem;
   line-height: 1;
-  padding: 0.6rem 1.3rem;
+  padding: 0.8rem 1.8rem;
   text-align: center;
   background-color: rgb(var(--color-badge-background));
   border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
@@ -12560,21 +12560,6 @@ h2,
   margin-left: 1rem;
 }
 
-.badge {
-  border: 1px solid transparent;
-  margin: 1.7rem 0 1rem 1rem;
-  border-radius: 4rem;
-  display: inline-block;
-  font-size: 1.2rem;
-  letter-spacing: 0.1rem;
-  line-height: 1;
-  padding: 0.6rem 1.3rem;
-  text-align: center;
-  background-color: rgb(var(--color-base-background-1));
-  border-color: rgba(var(--color-base-text), 0.04);
-  color: rgb(var(--color-base-text));
-}
-
 .badge--inverse {
   background-color: rgb(var(--color-base-text));
   border-color: rgb(var(--color-base-text));
@@ -12787,7 +12772,7 @@ h2,
 }
 .menu__dropdown-nomega details .header__submenu{
   position: absolute;
-  top: 0px;
+  top: -1px;
   right: calc(-100% - 5.2rem);
   min-width: 250px;
   background-color: #FFF;
@@ -12800,4 +12785,25 @@ h2,
   border-style: solid;
   border-width: var(--popup-border-width);
   box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius) rgba(var(--color-shadow),var(--popup-shadow-opacity));
+}
+/* menu__product */
+.megamenu__product .product-content{
+  max-width: 350px;
+}
+.megamenu__product .product-content .menu__item-product {
+  max-width: 250px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.megamenu__product .product-content .menu__item-product .card__content {
+  text-align: center;
+}
+.megamenu__product .product-content .menu__item-product .card-information .price {
+  text-align: center;
+}
+.list-menu--inline>li .item--2 .focus-inset>span{
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
